@@ -20,7 +20,10 @@ class LRUService extends Service {
   }
 
   async push(key, value) {
-    const result = await fs.writeFile(path.join(__dirname, `../vocabularies-cache/${key}`), value, 'utf8');
+    const result = await fs.writeFile(path.join(__dirname, `../vocabularies-cache/${key}`), value, 'utf8', (err) => {
+      if (err) console.log('The file has not been saved!');;
+      console.log('The file has been saved!');
+    });
     return result;
   }
 }
