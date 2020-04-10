@@ -13,6 +13,7 @@
   "dependencies": {
     "egg": "^2.26.0",
     "egg-scripts": "^2.13.0",
+    "egg-view-nunjucks": "^2.2.0",
     "puppeteer": "^2.1.1"
   },
   "devDependencies": {

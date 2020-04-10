@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html style="margin:0px;padding:0px;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);font-family:PingFangSC-Regular,sans-serif;background: #FFF2E2;">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover" />
+    <title>{{ word }}-nodejs-cambridge-dictionary"</title>
+    <link rel="icon" type="image/x-icon" href="https://gw.alicdn.com/tfs/TB1ILiNAFzqK1RjSZFoXXbfcXXa-160-160.png" />
+  </head>
+  <body style="margin: 10px 10px 25px 10px">
+    <div>
+      <span style="font-size: 36px;color: #1d2a57;font-weight: 800;">{{ word }}</span>
+    </div>
+    <div>
+      <span style="font-size: 14px;font-weight: 700;font-style: italic;color: #1d2a57;">{{ posgram }}</span>
+      <span style="font-size: 14px;font-weight: 300;font-style: italic;color: #1d2a57;">us:{{ usPhonogram }}</span>
+      <span style="font-size: 14px;font-weight: 300;font-style: italic;color: #1d2a57;">uk:{{ ukPhonogram }}</span>
+    </div>
+    <hr style="border-width: 0.6px;" />
+    <div>
+      <p style="margin-top: 10px;font-size: 18px;line-height: 1.5;color: #1d2a57;font-weight: 700">{{ meaning }}</p>
+      <ul>
+        {% for meaning in meaningDetails %}
+          <li style="margin-right: 22px;position: relative;font-size: 17px;margin-bottom: 10px;line-height: 1.4;font-size: 17px;">
+            {{ meaning }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <hr style="border-width: 0.6px;" />
+    <div>
+      <p style="margin-top: 10px;font-size: 18px;line-height: 1.5;color: #1d2a57;font-weight: 700">More Examples</p>
+      <ul>
+        {% for eg in examples %}
+          <li style="margin-right: 22px;position: relative;font-size: 17px;margin-bottom: 10px;line-height: 1.4;font-size: 17px;">
+            {{ eg }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+
+</html>
