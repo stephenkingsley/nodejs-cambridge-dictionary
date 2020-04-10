@@ -1,0 +1,21 @@
+{
+  "name": "cambridge-dictionary",
+  "scripts": {
+    "dev": "egg-bin dev",
+    "start": "egg-scripts start --daemon",
+    "stop": "egg-scripts stop"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "stephen.K",
+  "license": "ISC",
+  "description": "nodejs cambridge dictionary using puppeteer",
+  "dependencies": {
+    "egg": "^2.26.0",
+    "egg-scripts": "^2.13.0",
+    "puppeteer": "^2.1.1"
+  },
+  "devDependencies": {
+    "egg-bin": "^4.14.1"
+  }
+}
