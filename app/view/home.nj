@@ -3,11 +3,53 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover" />
-    <title>cambridge dictionary</title>
+    <link rel="icon" type="image/x-icon" href="https://gw.alicdn.com/tfs/TB1ILiNAFzqK1RjSZFoXXbfcXXa-160-160.png" />
+    <title>nodejs cambridge dictionary</title>
+    <style>
+      input {
+        text-size-adjust: 100%;
+        visibility: visible;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+        font: inherit;
+        margin: 0;
+        line-height: normal;
+        border: 1px solid #ddd;
+        background: #fff;
+        box-shadow: inset 1px 1px 2px 0 rgba(0,0,0,0.1);
+        color: #444;
+        outline: 0;
+        border-radius: 20px;
+        position: relative;
+        top: 0;
+        width: 90%;
+        padding: 10px;
+        padding-left: 15px;
+        margin-left: 5%;
+      }
+    </style>
   </head>
-  
-  <body>
-    <div id="root"></div>
+  <body style="margin:0px;padding:0px;">
+    <div style="height: 205px;width:100%;background:#1d2a57;">
+      <img style="margin-left: 15px;margin-top: 25px;" width="180" src="{{ icon }}" alt="icon">
+      <p style="margin-top: 0px;line-height: 20px;padding-left: 63px;margin-left: 10px;color:#fff;font-size: 17px">English Dictionary</p>
+      <form action="#">
+        <input type="search" placeholder="Search English" autofocus="autofocus">
+      </form>
+    </div>
+    <div style="padding: 10px;background: #FFF2E2;">
+      {% for line in lyric %}
+        <p style="margin-top: 8px;font-size: 18px;line-height: 1.2;color: #1d2a57;font-weight: 300">
+          {{ line }}
+        </p>
+      {% endfor %}
+    </div>
+    <script>
+      const inputDOM = document.querySelector('input');
+      inputDOM.dispatchEvent(new Event('focus'));
+      document.querySelector('form').addEventListener('submit', function() {
+        window.location.href('/dictionary?search=' + inputDOM.value);
+      });
+    </script>
   </body>
-
 </html>

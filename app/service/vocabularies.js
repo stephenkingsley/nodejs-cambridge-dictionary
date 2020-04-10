@@ -10,7 +10,13 @@ class VocabulariesService extends Service {
     await page.goto(`https://dictionary.cambridge.org/dictionary/english/${searchWord}`);
 
     const headwordHandle = await page.$('.headword');
-    const headword = await page.evaluate(headword => headword.textContent, headwordHandle);
+    const headword = await page.evaluate(headword => {
+      return headword ? headword.textContent : null;
+    }, headwordHandle);
+
+    if (!headword) {
+      return null;
+    }
 
     const posgramHandle = await page.$('.posgram');
     const posgram = await page.evaluate(posgram => posgram.textContent, posgramHandle);
