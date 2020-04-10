@@ -4,7 +4,7 @@ const path = require('path');
 
 const readFilePromise = (key) => {
   return new Promise(resolve => {
-    fs.readFile(path.join(__dirname, `../cache/${key}`), 'utf8', (err, data) => {
+    fs.readFile(path.join(__dirname, `../vocabularies-cache/${key}`), 'utf8', (err, data) => {
       if (err) {
         resolve(null);
       } else {
@@ -20,7 +20,7 @@ class LRUService extends Service {
   }
 
   async push(key, value) {
-    const result = await fs.writeFile(path.join(__dirname, `../cache/${key}`), value, 'utf8');
+    const result = await fs.writeFile(path.join(__dirname, `../vocabularies-cache/${key}`), value, 'utf8');
     return result;
   }
 }

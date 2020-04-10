@@ -14,10 +14,10 @@ class UpdateCache extends Subscription {
 
   // subscribe 是真正定时任务执行时被运行的函数
   async subscribe() {
-    fs.readdir(path.join(__dirname, '../cache'), (err, files) => {
+    fs.readdir(path.join(__dirname, '../vocabularies-cache'), (err, files) => {
       files.forEach(fileName => {
         setTimeout(() => {
-          fs.unlink(path.join(__dirname, `../cache/${fileName}`));
+          fs.unlink(path.join(__dirname, `../vocabularies-cache/${fileName}`));
         }, 1000);
       });
     });
