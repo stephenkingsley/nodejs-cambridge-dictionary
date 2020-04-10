@@ -2,6 +2,7 @@ const Controller = require('egg').Controller;
 const puppeteer = require('puppeteer');
 
 const icon = require('../public/img/icon');
+const serachIcon = require('../public/img/search');
 
 class HomeController extends Controller {
   async index() {
@@ -20,7 +21,6 @@ class HomeController extends Controller {
       'When in eternal lines to time thou grow\'st:',
       'So long as men can breathe or eyes can see,',
       'So long lives this, and this gives life to thee.',
-      '第18号十四行诗---莎士比亚',
       '我怎么能够把你来比作夏天呢？',
       '你比它可爱也比它温婉：',
       '狂风把五月的花蕾摇撼，',
@@ -35,7 +35,9 @@ class HomeController extends Controller {
       '当你在不朽的诗里与时同长。',
       '只要一天有人类，或人有眼睛，',
       '这诗将长存，并赐予你生命。',
+      '第18号十四行诗---莎士比亚',
     ];
+    this.ctx.set('Cache-Control', 'max-age=7200000');
     await this.ctx.render('home.nj', { icon, lyric, });
   }
 
@@ -48,18 +50,22 @@ class HomeController extends Controller {
 
     const cache = await this.ctx.service.lru.get(searchWord);
     if (cache) {
-      await this.ctx.render('dictionary.nj', JSON.parse(cache));
+      await this.ctx.render('dictionary.nj', {...JSON.parse(cache), serachIcon});
       return true;
     }
 
     const vocabulary = await this.ctx.service.vocabularies.get(searchWord);
     if (!vocabulary) {
-      await this.ctx.render('home.nj', { icon, });
+      const lyric = [
+        'No word explanation was found',
+        '没搜索到相关单词解释',
+      ];
+      await this.ctx.render('home.nj', { icon, lyric, });
       return null;
     }
 
     await this.ctx.service.lru.push(searchWord, JSON.stringify(vocabulary));
-    await this.ctx.render('dictionary.nj', vocabulary);
+    await this.ctx.render('dictionary.nj', {...vocabulary, serachIcon});
   }
 }
 

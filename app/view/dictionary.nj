@@ -9,6 +9,7 @@
   <body style="margin: 10px 10px 25px 10px">
     <div>
       <span style="font-size: 36px;color: #1d2a57;font-weight: 800;">{{ word }}</span>
+      <img src="{{ serachIcon }}" alt="icon" width="20" style="position: absolute;right: 10px;top: 10px;" onclick="window.location.href='/'">
     </div>
     <div>
       <span style="font-size: 14px;font-weight: 700;font-style: italic;color: #1d2a57;">{{ posgram }}</span>
@@ -38,5 +39,4 @@
       </ul>
     </div>
   </body>
-
 </html>

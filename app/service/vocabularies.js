@@ -7,7 +7,12 @@ class VocabulariesService extends Service {
     const page = await browser.newPage();
     await page.setUserAgent('Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X)');
     await page.setViewport({width:375, height:812});
-    await page.goto(`https://dictionary.cambridge.org/dictionary/english/${searchWord}`);
+    try {
+      await page.goto(`https://dictionary.cambridge.org/dictionary/english/${searchWord}`);
+    } catch (error) {
+      console.log('error');
+      return null;
+    }
 
     const headwordHandle = await page.$('.headword');
     const headword = await page.evaluate(headword => {

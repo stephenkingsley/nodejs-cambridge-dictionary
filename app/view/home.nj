@@ -33,13 +33,13 @@
     <div style="height: 205px;width:100%;background:#1d2a57;">
       <img style="margin-left: 15px;margin-top: 25px;" width="180" src="{{ icon }}" alt="icon">
       <p style="margin-top: 0px;line-height: 20px;padding-left: 63px;margin-left: 10px;color:#fff;font-size: 17px">English Dictionary</p>
-      <form action="#">
+      <form target="J_iframe">
         <input type="search" placeholder="Search English" autofocus="autofocus">
       </form>
     </div>
     <div style="padding: 10px;background: #FFF2E2;">
       {% for line in lyric %}
-        <p style="margin-top: 8px;font-size: 18px;line-height: 1.2;color: #1d2a57;font-weight: 300">
+        <p style="margin-top: 8px;font-size: 18px;line-height: 1.2;color: #1d2a57;font-weight: 300;font-family: cursive;">
           {{ line }}
         </p>
       {% endfor %}
@@ -48,7 +48,8 @@
       const inputDOM = document.querySelector('input');
       inputDOM.dispatchEvent(new Event('focus'));
       document.querySelector('form').addEventListener('submit', function() {
-        window.location.href('/dictionary?search=' + inputDOM.value);
+        var url = '/dictionary?search=' + inputDOM.value;
+        window.location.href = url;
       });
     </script>
   </body>
