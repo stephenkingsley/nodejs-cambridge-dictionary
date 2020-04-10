@@ -1,6 +1,7 @@
 # cambridge-dictionary
 nodejs cambridge dictionary using puppeteer to obtain vocabularies.
-<img src="./doc/demo.jpg" width="200">
+<br />
+<img src="./doc/demo.jpg" width="375">
 
 ## Develop
 
