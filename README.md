@@ -10,7 +10,7 @@ npm install
 npm run dev
 ```
 
-open `http://127.0.0.1:7001/search?search=hi` and then you can modifies the value of search and wait!
+open `http://127.0.0.1:7001/search?search=hi` and then you can modifies the value of search!
 
 ## DEMO
 coming soon
