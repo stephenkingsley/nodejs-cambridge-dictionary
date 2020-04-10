@@ -33,7 +33,7 @@
     <div style="height: 205px;width:100%;background:#1d2a57;">
       <img style="margin-left: 15px;margin-top: 25px;" width="180" src="{{ icon }}" alt="icon">
       <p style="margin-top: 0px;line-height: 20px;padding-left: 63px;margin-left: 10px;color:#fff;font-size: 17px">English Dictionary</p>
-      <form target="J_iframe">
+      <form action="">
         <input type="search" placeholder="Search English" autofocus="autofocus">
       </form>
     </div>
@@ -49,7 +49,7 @@
       inputDOM.dispatchEvent(new Event('focus'));
       document.querySelector('form').addEventListener('submit', function() {
         var url = '/dictionary?search=' + inputDOM.value;
-        window.location.href = url;
+        window.open(url);
       });
     </script>
   </body>
