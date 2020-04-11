@@ -32,18 +32,17 @@ class VocabulariesService extends Service {
     const ukDpronHandle = await page.$('.uk.dpron-i .pron');
     const ukDpron = await page.evaluate(ukDpron => ukDpron.textContent, ukDpronHandle);
 
-    const defHandle = await page.$('.def');
-    const def = await page.evaluate(def => def.textContent, defHandle);
+    const def = await page.$$eval('.def', def => def.map(item => item.textContent));
+    const dsense = await page.$$eval('.dsense_h', dsense => dsense.map(item => item.textContent));
+    const defBody = await page.$$eval('.def-body', defBody => defBody.map(item => item.textContent));
 
-    const defBodyHandle = await page.$('.def-body');
-    const defBody = await page.evaluate(defBody => {
-      const result = [];
-      const nums = defBody.childElementCount;
-      for (let i = 0; i < nums; i += 1) {
-        result.push(defBody.children[i].textContent);
-      }
-      return result;
-    }, defBodyHandle);
+    const meaningList = def.map((ele, index) => {
+      return {
+        def: def[index],
+        dsense: dsense[index],
+        defBody: defBody,
+      };
+    });
 
     const moreEg = await page.$$eval('.eg.dexamp.hax', eg => eg.map(item => item.textContent));
     await browser.close();
@@ -53,8 +52,7 @@ class VocabulariesService extends Service {
       posgram: posgram,
       usPhonogram: usDpron,
       ukPhonogram: ukDpron,
-      meaning: def,
-      meaningDetails: defBody,
+      meaningList: meaningList,
       examples: moreEg,
     };
   }

@@ -16,18 +16,22 @@
       <span style="font-size: 14px;font-weight: 300;font-style: italic;color: #1d2a57;">us:{{ usPhonogram }}</span>
       <span style="font-size: 14px;font-weight: 300;font-style: italic;color: #1d2a57;">uk:{{ ukPhonogram }}</span>
     </div>
-    <hr style="border-width: 0.6px;" />
+    <hr style="border-width: 0.6px;">
     <div>
-      <p style="margin-top: 10px;font-size: 18px;line-height: 1.5;color: #1d2a57;font-weight: 700">{{ meaning }}</p>
-      <ul>
-        {% for meaning in meaningDetails %}
-          <li style="margin-right: 22px;position: relative;font-size: 17px;margin-bottom: 10px;line-height: 1.4;font-size: 17px;">
-            {{ meaning }}
-          </li>
-        {% endfor %}
-      </ul>
+      {% for meaning in meaningList %}
+        <div style="border-bottom: 0.6px solid #eee;">
+          <p style="font-size:14px;font-weight:400;font-style:italic;color:#5d2fc1;margin-bottom:0;margin-top:10;">{{ meaning.dsense }}</p>
+          <p style="margin-top: 10px;font-size: 18px;line-height: 1.5;color:#1d2a57;font-weight: 700">{{ meaning.def }}</p>
+          <ul>
+            {% for db in meaning.defBody %}
+              <li style="margin-right: 22px;position: relative;font-size: 17px;margin-bottom: 10px;line-height: 1.4;font-size: 17px;">
+                {{ db }}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
     </div>
-    <hr style="border-width: 0.6px;" />
     <div>
       <p style="margin-top: 10px;font-size: 18px;line-height: 1.5;color: #1d2a57;font-weight: 700">More Examples</p>
       <ul>
